@@ -13,7 +13,9 @@ function Auth() {
           <div className="auth-success">
             <h1>Welcome to Alchemy{user?.username ? `, ${user.username}` : ''}!</h1>
             <button onClick={() => {
-              signOut();
+              if (signOut) {
+                signOut();
+              }
               navigate('/');
             }}>
               Sign Out
