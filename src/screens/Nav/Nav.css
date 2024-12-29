@@ -1,0 +1,94 @@
+.nav-container {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 12px;
+}
+
+.nav-content {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+.nav-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-download-btn {
+  background-color: #006acc;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nav-download-btn:hover {
+  background-color: #0055b3;
+}
+
+.nav-signin-btn {
+  background-color: transparent;
+  color: #006acc;
+  border: 1px solid #006acc;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-signin-btn:hover {
+  background-color: #f0f7ff;
+}
+
+.nav-os-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .nav-content {
+    padding: 0 24px;
+    height: 64px;
+  }
+  
+  .nav-logo {
+    height: 28px;
+  }
+  
+  .nav-download-btn,
+  .nav-signin-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+} 

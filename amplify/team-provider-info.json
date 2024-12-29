@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-alchemywebsitev2-dev-c3bd0-authRole",
+      "UnauthRoleArn": "arn:aws:iam::992778287051:role/amplify-alchemywebsitev2-dev-c3bd0-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::992778287051:role/amplify-alchemywebsitev2-dev-c3bd0-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-alchemywebsitev2-dev-c3bd0-deployment",
+      "UnauthRoleName": "amplify-alchemywebsitev2-dev-c3bd0-unauthRole",
+      "StackName": "amplify-alchemywebsitev2-dev-c3bd0",
+      "StackId": "arn:aws:cloudformation:us-east-1:992778287051:stack/amplify-alchemywebsitev2-dev-c3bd0/987dd050-c620-11ef-b310-0ed3d6e6b9f1",
+      "AmplifyAppId": "d2bh57byticqq9"
+    },
+    "categories": {
+      "auth": {
+        "alchemywebsitev29d65b7ca": {}
+      }
+    }
+  }
+}
