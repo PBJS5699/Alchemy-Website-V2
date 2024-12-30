@@ -5,7 +5,7 @@ import awsconfig from './aws-exports'
 import './index.css'
 import App from './App.tsx'
 
-Amplify.configure(awsconfig)
+Amplify.configure(awsconfig);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

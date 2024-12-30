@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "alchemywebsitev2d8195717": {}
+        "alchemywebsitev2d8195717": {},
+        "userPoolGroups": {}
       }
     }
   }

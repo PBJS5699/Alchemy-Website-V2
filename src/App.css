@@ -3,9 +3,10 @@
   width: 100%;
   background-color: white;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   margin: 0;
   padding: 0;
+  padding-top: 120px; /* Add space for the fixed nav */
 }
 
 .app > * {

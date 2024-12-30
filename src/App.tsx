@@ -4,6 +4,7 @@ import '@aws-amplify/ui-react/styles.css';
 import Nav from './screens/Nav/Nav';
 import Home from './screens/Home/Home';
 import Auth from './screens/Auth/Auth';
+import UserProfile from './screens/UserProfile/UserProfile';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/profile" element={<UserProfile />} />
           </Routes>
         </div>
       </Router>
