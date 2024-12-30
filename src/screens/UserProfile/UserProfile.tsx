@@ -24,8 +24,7 @@ const UserProfile: React.FC = () => {
         // Get current authenticated user
         const user = await getCurrentUser();
         
-        // Get user info from signInDetails
-        const signInDetails = user.signInDetails;
+        // Get username
         const username = user.username;
         
         setUserData({
