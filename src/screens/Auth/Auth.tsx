@@ -166,11 +166,11 @@ function Auth() {
         }}
         services={{
           async handleSignUp(formData: CustomSignUpInput): Promise<SignUpOutput> {
-            const { username, password } = formData;
+            const { username } = formData;
             return {
               isSignUpComplete: true,
               nextStep: {
-                signUpStep: 'COMPLETE',
+                signUpStep: 'DONE',
               },
               userId: username,
               username,
