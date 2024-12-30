@@ -1,6 +1,7 @@
 import { Authenticator } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useMemo, useRef, useEffect } from 'react';
+import { SignUpInput, SignUpOutput } from '@aws-amplify/auth';
 import '@aws-amplify/ui-react/styles.css';
 import './Auth.css';
 
@@ -87,6 +88,10 @@ const AffiliationField = ({ label, onChange }: AffiliationFieldProps) => {
   );
 };
 
+interface CustomSignUpInput extends SignUpInput {
+  'custom:university'?: string;
+}
+
 function Auth() {
   const navigate = useNavigate();
 
@@ -160,15 +165,15 @@ function Auth() {
           },
         }}
         services={{
-          async handleSignUp(formData) {
-            const { username, password, attributes } = formData;
+          async handleSignUp(formData: CustomSignUpInput): Promise<SignUpOutput> {
+            const { username, password } = formData;
             return {
+              isSignUpComplete: true,
+              nextStep: {
+                signUpStep: 'COMPLETE',
+              },
+              userId: username,
               username,
-              password,
-              attributes: {
-                ...attributes,
-                'custom:university': formData['custom:university']
-              }
             };
           }
         }}
@@ -176,7 +181,7 @@ function Auth() {
         {({ signOut, user }) => (
           <div className="auth-success">
             <h1>Welcome to Alchemy{user?.username ? `, ${user.username}` : ''}!</h1>
-            <p>University: {user?.attributes?.['custom:university']}</p>
+            <p>University: {user?.signInDetails?.loginId}</p>
             <button onClick={() => {
               if (signOut) {
                 signOut();
