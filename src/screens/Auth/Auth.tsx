@@ -1,7 +1,7 @@
 import { Authenticator } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useMemo, useRef, useEffect } from 'react';
-import { SignUpInput, AuthSignUpOutput } from '@aws-amplify/auth';
+import { signUp } from '@aws-amplify/auth';
 import '@aws-amplify/ui-react/styles.css';
 import './Auth.css';
 
@@ -88,8 +88,11 @@ const AffiliationField = ({ label, onChange }: AffiliationFieldProps) => {
   );
 };
 
-interface CustomSignUpInput extends SignUpInput {
-  'custom:university'?: string;
+interface CustomAuthUser {
+  username?: string;
+  attributes?: {
+    'custom:university'?: string;
+  };
 }
 
 function Auth() {
@@ -165,20 +168,37 @@ function Auth() {
           },
         }}
         services={{
-          async handleSignUp(formData: CustomSignUpInput): Promise<AuthSignUpOutput> {
-            return {
-              isSignUpComplete: true,
-              nextStep: {
-                signUpStep: 'DONE'
-              }
-            };
+          async handleSignUp(formData) {
+            const { username, password } = formData;
+            try {
+              const signUpResult = await signUp({
+                username,
+                password,
+                options: {
+                  userAttributes: {
+                    email: formData.email,
+                    'custom:university': formData['custom:university'] as string || ''
+                  }
+                }
+              });
+              
+              return {
+                isSignUpComplete: true,
+                nextStep: {
+                  signUpStep: 'DONE'
+                }
+              };
+            } catch (error) {
+              console.error('Error signing up:', error);
+              throw error;
+            }
           }
         }}
       >
         {({ signOut, user }) => (
           <div className="auth-success">
             <h1>Welcome to Alchemy{user?.username ? `, ${user.username}` : ''}!</h1>
-            <p>University: {user?.signInDetails?.loginId}</p>
+            <p>University: {(user as CustomAuthUser)?.attributes?.['custom:university'] || 'Not specified'}</p>
             <button onClick={() => {
               if (signOut) {
                 signOut();
