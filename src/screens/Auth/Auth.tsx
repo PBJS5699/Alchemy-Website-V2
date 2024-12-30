@@ -1,7 +1,7 @@
 import { Authenticator } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useMemo, useRef, useEffect } from 'react';
-import { SignUpInput, SignUpOutput } from '@aws-amplify/auth';
+import { SignUpInput, AuthSignUpOutput } from '@aws-amplify/auth';
 import '@aws-amplify/ui-react/styles.css';
 import './Auth.css';
 
@@ -165,15 +165,12 @@ function Auth() {
           },
         }}
         services={{
-          async handleSignUp(formData: CustomSignUpInput): Promise<SignUpOutput> {
-            const { username } = formData;
+          async handleSignUp(formData: CustomSignUpInput): Promise<AuthSignUpOutput> {
             return {
               isSignUpComplete: true,
               nextStep: {
-                signUpStep: 'DONE',
-              },
-              userId: username,
-              username,
+                signUpStep: 'DONE'
+              }
             };
           }
         }}
