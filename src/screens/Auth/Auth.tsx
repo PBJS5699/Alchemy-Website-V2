@@ -88,14 +88,6 @@ const AffiliationField = ({ label, onChange }: AffiliationFieldProps) => {
   );
 };
 
-interface SignUpFormData {
-  username: string;
-  password: string;
-  email: string;
-  'custom:university'?: string;
-  [key: string]: string | undefined;
-}
-
 interface CustomAuthUser {
   username?: string;
   attributes?: {
