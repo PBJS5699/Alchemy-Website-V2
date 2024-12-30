@@ -25,6 +25,7 @@ function Nav() {
   const { authStatus } = useAuthenticator();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [showShadow, setShowShadow] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -35,6 +36,21 @@ function Nav() {
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('.hero');
+      if (heroSection) {
+        const heroHeight = heroSection.getBoundingClientRect().height;
+        const heroTop = heroSection.getBoundingClientRect().top;
+        // Show shadow when we've scrolled past 1/3 of the hero section
+        setShowShadow(heroTop < -(heroHeight / 4));
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const userOS = useMemo(() => {
@@ -84,7 +100,7 @@ function Nav() {
   };
 
   return (
-    <nav className="nav-container">
+    <div className={`nav-container ${showShadow ? 'nav-shadow' : ''}`}>
       <div className="nav-content">
         <div className="nav-left">
           <img 
@@ -130,7 +146,7 @@ function Nav() {
           {getDownloadButton()}
         </div>
       </div>
-    </nav>
+    </div>
   );
 }
 
