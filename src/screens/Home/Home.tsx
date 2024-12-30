@@ -5,8 +5,15 @@ import automaticTrainingImg from '../../assets/screenshots/automatic-training.pn
 import fullyReproducibleImg from '../../assets/screenshots/fully-reproducible.png';
 import appleLogo from '../../assets/os-icons/apple-logo.png';
 import windowsLogo from '../../assets/os-icons/windows-logo.png';
+import heroScreenshot from '../../assets/background/cropped-screenshot.png';
 import { Link } from 'react-router-dom';
 import { useMemo } from 'react';
+
+const VideoIcon = () => (
+  <svg className="watch-demo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17 10.5V7c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2v-3.5l4 4v-11l-4 4z" fill="currentColor"/>
+  </svg>
+);
 
 function Home() {
   const userOS = useMemo(() => {
@@ -53,18 +60,23 @@ function Home() {
       <Nav />
       <div className="home-container">
         <section className="hero">
-          <h1 className="home-title">
-            <span className="gradient-text">Supercharge your research with AI</span>
-            <br />
-            From raw data to publication-ready results
-          </h1>
-          <p className="hero-subtitle">
-            No more repetitive, manual, subjective image analysis. With our easy drag-and-drop solution, 
-            create custom image analysis programs for your research you can share with your peers and 
-            cite in your research - all without writing a single line of code.
-          </p>
-          <div className="download-section">
-            {getDownloadButton()}
+          <div className="hero-content">
+            <h1 className="home-title">
+              The AI Research Assistant
+            </h1>
+            <p className="hero-subtitle">
+              No more repetitive, time-consuming data analysis. <br /> With Alchemy AI, turn your images into publication-ready results - <br />all without writing a single line of code.
+            </p>
+            <div className="download-section">
+              {getDownloadButton()}
+              <button className="watch-demo-btn">
+                <VideoIcon />
+                Watch Demo
+              </button>
+            </div>
+            <div className="hero-screenshot-container">
+              <img src={heroScreenshot} alt="Alchemy AI Interface" className="hero-screenshot" />
+            </div>
           </div>
         </section>
 
@@ -97,10 +109,6 @@ function Home() {
             </p>
             <img src={fullyReproducibleImg} alt="Reproducible analysis interface" className="feature-image" />
           </div>
-        </section>
-
-        <section className="cta">
-          <button className="cta-button">Request Demo</button>
         </section>
 
         <footer className="footer">
