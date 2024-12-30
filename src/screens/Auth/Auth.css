@@ -38,6 +38,74 @@
   background-color: #0055b3;
 }
 
+/* Form Styles */
+.form-field {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-field label,
+.custom-select-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.form-field input,
+.college-search-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form-field input:focus,
+.college-search-input:focus {
+  outline: none;
+  border-color: #006acc;
+  box-shadow: 0 0 0 2px rgba(0, 106, 204, 0.1);
+}
+
+/* Dropdown Styles */
+.custom-select-container {
+  margin-bottom: 1rem;
+  width: 100%;
+  position: relative;
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.college-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.college-option {
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.college-option:hover {
+  background-color: #f5f8fc;
+}
+
 @media (max-width: 480px) {
   .auth-container [data-amplify-authenticator] {
     min-width: 100%;

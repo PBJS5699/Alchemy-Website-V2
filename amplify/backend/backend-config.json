@@ -1,6 +1,6 @@
 {
   "auth": {
-    "alchemywebsitev29d65b7ca": {
+    "alchemywebsitev2d8195717": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -16,7 +16,9 @@
           "EMAIL"
         ],
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
           "EMAIL"
         ]
