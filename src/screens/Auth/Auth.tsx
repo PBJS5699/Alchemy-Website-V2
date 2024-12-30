@@ -1,7 +1,7 @@
 import { Authenticator } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useMemo, useRef, useEffect } from 'react';
-import { signUp } from '@aws-amplify/auth';
+import { signUp, SignUpInput } from '@aws-amplify/auth';
 import '@aws-amplify/ui-react/styles.css';
 import './Auth.css';
 
@@ -88,6 +88,14 @@ const AffiliationField = ({ label, onChange }: AffiliationFieldProps) => {
   );
 };
 
+interface SignUpFormData {
+  username: string;
+  password: string;
+  email: string;
+  'custom:university'?: string;
+  [key: string]: string | undefined;
+}
+
 interface CustomAuthUser {
   username?: string;
   attributes?: {
@@ -168,16 +176,15 @@ function Auth() {
           },
         }}
         services={{
-          async handleSignUp(formData) {
-            const { username, password } = formData;
+          async handleSignUp(input: SignUpInput) {
             try {
-              const signUpResult = await signUp({
-                username,
-                password,
+              await signUp({
+                username: input.username,
+                password: input.password,
                 options: {
                   userAttributes: {
-                    email: formData.email,
-                    'custom:university': formData['custom:university'] as string || ''
+                    email: input.options?.userAttributes?.email || '',
+                    'custom:university': (input as any)['custom:university'] || ''
                   }
                 }
               });
