@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import { signUp, SignUpInput, signIn, ConfirmSignUpInput, confirmSignUp, SignUpOutput, ConfirmSignUpOutput } from '@aws-amplify/auth';
 import '@aws-amplify/ui-react/styles.css';
 import './Auth.css';
+import logo from '../../assets/logo/logo-text-stack.png';
 
 // List of US colleges
 const US_COLLEGES = [
@@ -108,6 +109,16 @@ function Auth() {
     };
   }, []);
 
+  useEffect(() => {
+    // Add class when component mounts
+    document.body.classList.add('auth-page');
+    
+    // Remove class when component unmounts
+    return () => {
+      document.body.classList.remove('auth-page');
+    };
+  }, []);
+
   const handleSignUp = async (input: SignUpInput): Promise<SignUpOutput> => {
     try {
       if (!input.password || !input.options?.userAttributes?.email) {
@@ -183,6 +194,12 @@ function Auth() {
 
   return (
     <div className="auth-container">
+      <img 
+        src={logo} 
+        alt="Alchemy Logo" 
+        className="auth-logo" 
+        onClick={() => navigate('/')}
+      />
       <Authenticator
         initialState="signUp"
         components={{
