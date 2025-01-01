@@ -42,7 +42,7 @@
 }
 
 .nav-download-btn {
-  background-color: #0C1437;
+  background-color: #00456A;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -56,7 +56,7 @@
 }
 
 .nav-download-btn:hover {
-  background-color: #161f4d;
+  background-color: #005584;
 }
 
 .nav-signin-btn {
