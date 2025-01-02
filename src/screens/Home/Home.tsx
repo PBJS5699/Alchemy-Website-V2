@@ -68,11 +68,20 @@ function Home() {
               No more repetitive, time-consuming data analysis. <br /> With Alchemy AI, turn your images into publication-ready results - <br />all without writing a single line of code.
             </p>
             <div className="download-section">
-              {getDownloadButton()}
-              <button className="watch-demo-btn">
-                <VideoIcon />
-                Watch Demo
-              </button>
+              <div className="buttons-container">
+                {getDownloadButton()}
+                <button className="watch-demo-btn">
+                  <VideoIcon />
+                  Watch Demo
+                </button>
+              </div>
+              <p className="download-message">
+                Our downloadable app and demo video are coming soon, but if you have a usecase for your research, please reachout to our CEO at{' '}
+                <a href="mailto:phillip@alchemyai.dev" className="email-link">
+                  phillip@alchemyai.dev
+                </a>
+                {' '}and we'll respond within an hour!!
+              </p>
             </div>
             <div className="hero-screenshot-container">
               <img src={heroScreenshot} alt="Alchemy AI Interface" className="hero-screenshot" />
