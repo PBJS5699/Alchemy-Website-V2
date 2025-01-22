@@ -112,6 +112,12 @@ function Nav() {
           />
         </div>
         <div className="nav-right">
+          <button 
+            className="nav-text-btn"
+            onClick={() => window.open('https://wry-swim-eb7.notion.site/Alchemy-Nodes-Wiki-179e5183395e808da559d64e452056b1?pvs=4', '_blank')}
+          >
+            Nodes Wiki
+          </button>
           {authStatus === 'authenticated' ? (
             <div className="profile-dropdown-container" ref={dropdownRef}>
               <button 
