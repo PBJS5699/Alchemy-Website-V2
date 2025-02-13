@@ -112,9 +112,9 @@ function Home() {
           <div className="feature">
             <h2>3. Fully Reproducible</h2>
             <p>
-              Ensure consistency and credibility. Generate reproducible code for every analysis, 
-              ready to cite in publications or share with peers. Boost transparency and eliminate 
-              result variations between analysts.
+              Share and reuse analysis workflows effortlessly. Save custom components and entire pipelines 
+              to collaborate with your team or share with the research community. Ensure consistent results 
+              across labs by eliminating variations between analysts.
             </p>
             <img src={fullyReproducibleImg} alt="Reproducible analysis interface" className="feature-image" />
           </div>
