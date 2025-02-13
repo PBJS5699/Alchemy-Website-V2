@@ -8,7 +8,7 @@ import windowsLogo from '../../assets/os-icons/windows-logo.png';
 import heroScreenshot from '../../assets/background/cropped-screenshot.png';
 import demoVideo from '../../assets/videos/alchemy-demo-v1.mp4';
 import { Link } from 'react-router-dom';
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 
 const VideoIcon = () => (
   <svg className="watch-demo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
