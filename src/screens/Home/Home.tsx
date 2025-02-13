@@ -6,8 +6,9 @@ import fullyReproducibleImg from '../../assets/screenshots/fully-reproducible.pn
 import appleLogo from '../../assets/os-icons/apple-logo.png';
 import windowsLogo from '../../assets/os-icons/windows-logo.png';
 import heroScreenshot from '../../assets/background/cropped-screenshot.png';
+import demoVideo from '../../assets/videos/alchemy-demo-v1.mp4';
 import { Link } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 const VideoIcon = () => (
   <svg className="watch-demo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +16,53 @@ const VideoIcon = () => (
   </svg>
 );
 
+const VideoModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="video-modal-overlay" onClick={onClose}>
+      <div className="video-modal-content" onClick={e => e.stopPropagation()}>
+        <button className="video-modal-close" onClick={onClose}>×</button>
+        {error && (
+          <div className="video-error">
+            <p>{error}</p>
+            <button onClick={onClose} className="error-close-btn">Close</button>
+          </div>
+        )}
+        <video 
+          controls 
+          autoPlay 
+          className="demo-video"
+          src={demoVideo}
+          onError={(e) => {
+            setIsLoading(false);
+            setError('Unable to play the video. Please try again later.');
+            console.error('Video Error:', e);
+          }}
+          onLoadedData={() => {
+            setIsLoading(false);
+            setError(null);
+          }}
+          style={{ display: error ? 'none' : 'block' }}
+        >
+          Your browser does not support the video tag.
+        </video>
+        {isLoading && (
+          <div className="video-loading">
+            <div className="loading-spinner"></div>
+            <p>Loading video...</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 function Home() {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const userOS = useMemo(() => {
     const platform = navigator.platform.toLowerCase();
     if (platform.includes('mac')) return 'mac';
@@ -70,7 +117,7 @@ function Home() {
             <div className="download-section">
               <div className="buttons-container">
                 {getDownloadButton()}
-                <button className="watch-demo-btn">
+                <button className="watch-demo-btn" onClick={() => setIsVideoModalOpen(true)}>
                   <VideoIcon />
                   Watch Demo
                 </button>
@@ -127,6 +174,7 @@ function Home() {
           </div>
         </footer>
       </div>
+      <VideoModal isOpen={isVideoModalOpen} onClose={() => setIsVideoModalOpen(false)} />
     </>
   );
 }
