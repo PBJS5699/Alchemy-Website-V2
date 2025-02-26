@@ -3,12 +3,10 @@ import Nav from '../Nav/Nav';
 import nodeBasedImg from '../../assets/screenshots/node-based.png';
 import automaticTrainingImg from '../../assets/screenshots/automatic-training.png';
 import fullyReproducibleImg from '../../assets/screenshots/fully-reproducible.png';
-import appleLogo from '../../assets/os-icons/apple-logo.png';
-import windowsLogo from '../../assets/os-icons/windows-logo.png';
 import heroScreenshot from '../../assets/background/cropped-screenshot.png';
 import demoVideo from '../../assets/videos/alchemy-demo-v1.mp4';
 import { Link } from 'react-router-dom';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 const VideoIcon = () => (
   <svg className="watch-demo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -63,12 +61,6 @@ const VideoModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 
 function Home() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const userOS = useMemo(() => {
-    const platform = navigator.platform.toLowerCase();
-    if (platform.includes('mac')) return 'mac';
-    if (platform.includes('win')) return 'windows';
-    return 'other';
-  }, []);
 
   const getRequestDemoButton = () => {
     return (
