@@ -70,36 +70,12 @@ function Home() {
     return 'other';
   }, []);
 
-  const getDownloadButton = () => {
-    switch (userOS) {
-      case 'mac':
-        return (
-          <button className="download-btn">
-            <img src={appleLogo} alt="Apple logo" className="os-icon" />
-            Download for Mac
-          </button>
-        );
-      case 'windows':
-        return (
-          <button className="download-btn">
-            <img src={windowsLogo} alt="Windows logo" className="os-icon" />
-            Download for Windows
-          </button>
-        );
-      default:
-        return (
-          <div className="download-buttons">
-            <button className="download-btn">
-              <img src={appleLogo} alt="Apple logo" className="os-icon" />
-              Download for Mac
-            </button>
-            <button className="download-btn">
-              <img src={windowsLogo} alt="Windows logo" className="os-icon" />
-              Download for Windows
-            </button>
-          </div>
-        );
-    }
+  const getRequestDemoButton = () => {
+    return (
+      <a href="https://forms.gle/Cjtw3V2MMRK76exp7" target="_blank" rel="noopener noreferrer" className="download-btn request-demo-btn">
+        Request Demo
+      </a>
+    );
   };
 
   return (
@@ -116,7 +92,7 @@ function Home() {
             </p>
             <div className="download-section">
               <div className="buttons-container">
-                {getDownloadButton()}
+                {getRequestDemoButton()}
                 <button className="watch-demo-btn" onClick={() => setIsVideoModalOpen(true)}>
                   <VideoIcon />
                   Watch Demo
